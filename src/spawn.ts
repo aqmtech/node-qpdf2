@@ -22,7 +22,8 @@ export default (callArguments: string[]): Promise<Buffer> =>
     });
     process.on("close", (code) => {
       if (code === 0) {
-        resolve(Buffer.from(stdout.join("")));
+        // resolve(Buffer.from(stdout.join("")));
+        resolve(stdout);
       } else {
         // There is a problem from qpdf
         reject(new Error(Buffer.from(stderr.join("")).toLocaleString()));
