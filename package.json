@@ -1,6 +1,6 @@
 {
   "name": "node-qpdf2",
-  "version": "6.1.1-aqmtech",
+  "version": "6.1.2-aqmtech",
   "description": "A Content Preserving transformations on PDFs wrapped around QPDF",
   "keywords": [
     "pdf",
@@ -10,7 +10,7 @@
     "pdf encryption",
     "pdf decryption",
     "encrypt",
-    "dcrypt",
+    "decrypt",
     "aes",
     "rc4",
     "aes-256",
@@ -29,14 +29,29 @@
   "license": "MIT",
   "author": "Kyle McNally <kyle@kmcnally.net>",
   "type": "module",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    }
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "rm -rf dist/** && tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist/**",
+    "build:cjs": "babel src --out-dir dist/cjs --extensions \".js,.ts\" --plugins=@babel/plugin-transform-modules-commonjs",
+    "build:esm": "babel src --out-dir dist/esm --extensions \".js,.ts\"",
+    "build": "npm run clean && npm run build:cjs && npm run build:esm",
     "lint": "eslint \"**/*.?(c|m)[jt]s?(x)\"",
     "test": "vitest run --coverage"
   },
   "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
     "@sparticuz/eslint-config": "^9.0.4",
     "@tsconfig/node18": "^18.2.4",
     "@tsconfig/strictest": "^2.0.5",
