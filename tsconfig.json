@@ -5,7 +5,7 @@
   "compilerOptions": {
     "module": "CommonJS",
     "moduleResolution": "node",
-    "outDir": "dist",
+    "outDir": "dist/types",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
