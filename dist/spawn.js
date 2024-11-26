@@ -30,3 +30,4 @@ exports.default = (callArguments) => new Promise((resolve, reject) => {
         }
     });
 });
+//# sourceMappingURL=spawn.js.map

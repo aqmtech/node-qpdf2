@@ -1,11 +1,16 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "CommonJS",
-    "outDir": "dist/types",
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": false
+    "module": "CommonJS", // Ensure compatibility with your main project
+    "outDir": "./dist", // Output directory for compiled files
+    "declaration": true, // Generate type declaration files
+    "declarationMap": true, // Generate declaration maps for debugging
+    "sourceMap": true // Include source maps for debugging (optional but helpful)
   },
-  "exclude": ["test", "vitest.config.ts"]
+  "exclude": [
+    "test", // Exclude tests
+    "vitest.config.ts", // Exclude vitest config file
+    "node_modules", // Ensure node_modules is excluded
+    "dist" // Avoid re-compiling output directory
+  ]
 }

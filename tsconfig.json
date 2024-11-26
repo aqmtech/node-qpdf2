@@ -3,17 +3,18 @@
   "display": "Base Default TSConfig",
   "extends": ["@tsconfig/node18/tsconfig", "@tsconfig/strictest/tsconfig"],
   "compilerOptions": {
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "outDir": "dist/types",
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "resolveJsonModule": true,
+    "module": "CommonJS", // CommonJS module system for compatibility
+    "moduleResolution": "node", // Node.js style module resolution
+    "target": "ES6", // Matches your main project's target
+    "outDir": "./dist", // Output directory for compiled files
+    "declaration": true, // Generate type declaration files
+    "declarationMap": true, // Generate declaration maps
+    "sourceMap": true, // Include source maps for debugging
+    "resolveJsonModule": true, // Support importing JSON files
     "exactOptionalPropertyTypes": false,
     "noUnusedLocals": false,
-    "verbatimModuleSyntax": false
+    "verbatimModuleSyntax": false // Prevent unnecessary verbatim syntax
   },
-  "include": ["src"],
+  "include": ["src"], // Include the source directory for transpilation
   "exclude": ["node_modules", "dist", "test", "vitest.config.ts"]
 }

@@ -29,15 +29,17 @@
   "license": "MIT",
   "author": "Kyle McNally <kyle@kmcnally.net>",
   "type": "commonjs",
-  "main": "./dist/cjs/index.js",
+  "main": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "clean": "rm -rf dist/**",
-    "build:types": "tsc --project tsconfig.build.json",
-    "build:cjs": "babel src --out-dir dist/cjs --extensions \".js,.ts\" --plugins=@babel/plugin-transform-modules-commonjs",
-    "build": "npm run clean && npm run build:types && npm run build:cjs",
+    "build": "tsc",
     "lint": "eslint \"**/*.?(c|m)[jt]s?(x)\"",
-    "test": "vitest run --coverage"
+    "test": "vitest run --coverage",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@babel/cli": "^7.25.9",

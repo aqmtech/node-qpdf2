@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -15,9 +24,9 @@ const EncryptDefaults = {
  * @param userPayload The options for encryption
  * @returns The output of QPDF
  */
-const encrypt = async (userPayload) => {
+const encrypt = (userPayload) => __awaiter(void 0, void 0, void 0, function* () {
     // Set Defaults
-    const payload = { ...EncryptDefaults, ...userPayload };
+    const payload = Object.assign(Object.assign({}, EncryptDefaults), userPayload);
     // Check if the file exists
     if (!payload.input)
         throw new Error("Please specify input file");
@@ -87,5 +96,6 @@ const encrypt = async (userPayload) => {
     }
     // Execute command and return stdout for pipe
     return (0, spawn_js_1.default)(callArguments);
-};
+});
 exports.encrypt = encrypt;
+//# sourceMappingURL=encrypt.js.map
